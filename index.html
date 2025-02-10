@@ -3,72 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Cafe Indah</title>
+    <title>Menu Café Indah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
        /* Animasi background gradient */
        @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    body {
-        background: linear-gradient(-45deg, #f5f7fa, #c3cfe2);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease-in-out infinite;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
-
-    /* Animasi fade-in lebih halus */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(-5px);
-        animation: fadeIn 0.6s ease-out forwards;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-5px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Efek teks judul tanpa scale */
-    .title-effect {
-        animation: none; /* Menghapus efek scaling */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Meningkatkan keterbacaan pada mobile */
-    @media screen and (max-width: 768px) {
-        h1 {
-            font-size: 2.5rem; /* Lebih kecil agar tidak blur */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-    }
-</style>
+
+        body {
+            background: linear-gradient(-45deg, #f5f7fa, #c3cfe2);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease-in-out infinite;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Efek Fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(-5px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Maksimalkan keterbacaan pada Mobile */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem; /* Lebih kecil agar tidak blur */
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            }
+            .category-button {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+            }
+        }
+    </style>
 </head>
-<body class="p-5 font-sans">
+<body class="p-4 font-sans max-w-md mx-auto">
 
     <!-- Header -->
-    <header class="text-center py-8 bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 text-white rounded-lg shadow-lg fade-in">
-        <h1 class="text-5xl font-bold welcome-text">Selamat Datang di Cafe Indah</h1>
+    <header class="text-center py-6 bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 text-white rounded-lg shadow-lg fade-in">
+        <h1 class="text-4xl font-bold">Selamat Datang di Cafe Indah</h1>
         <p class="mt-2 text-lg italic">Nikmati pilihan menu lezat yang siap memanjakan lidah Anda!</p>
+        <p class="mt-2 text-md">
+            Telpon/WA: 
+            <a href="https://wa.me/+6282156213784" class="font-bold underline hover:text-green-300">
+                0821-5621-3784
+            </a>
+        </p>
     </header>
 
     <!-- Filter Kategori -->
-    <div class="flex justify-center gap-4 mt-6 mb-8 fade-in">
-        <button class="bg-teal-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-600 category-button" onclick="filterMenu('all')">Semua</button>
-        <button class="bg-blue-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-500 category-button" onclick="filterMenu('makanan')">Makanan</button>
-        <button class="bg-indigo-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-indigo-500 category-button" onclick="filterMenu('minuman')">Minuman</button>
+    <div class="flex flex-wrap justify-center gap-3 mt-6 mb-6 fade-in">
+        <button class="bg-teal-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-teal-600 category-button" onclick="filterMenu('all')">Semua</button>
+        <button class="bg-blue-400 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-500 category-button" onclick="filterMenu('makanan')">Makanan</button>
+        <button class="bg-indigo-400 text-white px-5 py-2 rounded-lg shadow-md hover:bg-indigo-500 category-button" onclick="filterMenu('minuman')">Minuman</button>
+        <button class="bg-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-pink-600 category-button" onclick="showPayment()">Pembayaran</button>
+    </div>
+
+    <!-- Kontainer Pembayaran -->
+    <div id="payment-container" class="hidden text-center mt-6 fade-in">
+        <p class="text-lg font-semibold text-gray-700">Silakan scan QRIS untuk melakukan pembayaran:</p>
+        <img src="Qris.jpg" alt="QRIS Payment" class="mx-auto mt-4 rounded-lg shadow-lg w-40 h-40 sm:w-48 sm:h-48">
     </div>
 
     <!-- Daftar Menu -->
-    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10 fade-in">
-        <!-- Menu dan varian akan di-generate oleh JavaScript -->
+    <div id="menu-container" class="grid grid-cols-1 gap-4 mb-8 fade-in">
+        <!-- Menu akan di-generate oleh JavaScript -->
     </div>
 
     <!-- JavaScript -->
+    <script>
+        function showPayment() {
+            document.getElementById("menu-container").classList.add("hidden"); 
+            document.getElementById("payment-container").classList.remove("hidden");
+        }
+    </script>
+
     <script src="scriptt.js"></script>
 </body>
 </html>
