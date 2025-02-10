@@ -123,7 +123,7 @@ const menuData = [
         type: "minuman",
         items: [
             { name: "Sarabba Susu", price: 10000 },
-            { name: "Sarabba Biasa", price: 5000 },
+            { name: "Sarabba Biasa", price: 8000 },
             { name: "Sarabba Susu dan Telur", price: 15000 },
             { name: "Sarabba Susu, Telur dan Madu", price: 18000 },
             { name: "Capucino Susu", price: 10000 },
