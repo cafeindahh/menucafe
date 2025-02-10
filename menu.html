@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Café Indah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-5 font-sans">
+
+    <!-- Header -->
+    <header class="text-center py-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white shadow-lg">
+        <h1 class="text-4xl font-bold">Selamat Datang di Café Indah</h1>
+        <p class="mt-2 text-lg italic">Nikmati pilihan menu lezat yang siap memanjakan lidah Anda!</p>
+    </header>
+
+    <!-- Filter Kategori -->
+    <div class="flex justify-center flex-wrap gap-4 mt-6 mb-8">
+        <button class="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300" onclick="filterMenu('all')">Semua</button>
+        <button class="bg-orange-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-500 transition duration-300" onclick="filterMenu('makanan')">Makanan</button>
+        <button class="bg-green-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition duration-300" onclick="filterMenu('minuman')">Minuman</button>
+    </div>
+
+    <!-- Daftar Menu -->
+    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+        <!-- Menu akan di-generate oleh JavaScript -->
+    </div>
+
+    <!-- Modal untuk Pilih Varian -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-4/5 sm:w-3/5 md:w-1/3 text-center">
+            <h2 id="modal-title" class="text-xl font-bold mb-4">Pilih Varian</h2>
+            <div id="modal-content" class="space-y-2"></div>
+            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onclick="closeModal()">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
