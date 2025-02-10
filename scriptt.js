@@ -81,8 +81,8 @@ const menuData = [
             { name: "Roti Bakar Keju", price: 17000 },
             { name: "Roti Bakar Mentega Gula", price: 17000 },
             { name: "Roti Bakar Palem Sugar", price: 17000 },
-            { name: "Roti Bakar Milo", price: 20000 },
-            { name: "Roti Bakar (Mix 2 rasa)", price: 17000 },   
+            { name: "Roti Bakar Milo", price: 17000 },
+            { name: "Roti Bakar (Mix 2 rasa)", price: 20000 },   
         ]
     },
     {
@@ -172,6 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fungsi untuk menampilkan menu sesuai kategori
 function filterMenu(filterType) {
+    document.getElementById("menu-container").classList.remove("hidden"); // Pastikan menu tampil
+    document.getElementById("payment-container").classList.add("hidden"); // Sembunyikan pembayaran
+
     const container = document.getElementById("menu-container");
     container.innerHTML = ""; // Kosongkan kontainer sebelum diisi ulang
 
@@ -233,5 +236,19 @@ function toggleVariants(category) {
                 item.classList.remove("opacity-0", "translate-y-3");
             }, index * 100);
         });
+    }
+}
+
+// Fungsi untuk menampilkan atau menyembunyikan pembayaran
+function togglePayment() {
+    const menuContainer = document.getElementById("menu-container");
+    const paymentContainer = document.getElementById("payment-container");
+
+    if (paymentContainer.classList.contains("hidden")) {
+        menuContainer.classList.add("hidden"); // Sembunyikan menu
+        paymentContainer.classList.remove("hidden"); // Tampilkan pembayaran
+    } else {
+        paymentContainer.classList.add("hidden"); // Sembunyikan pembayaran
+        menuContainer.classList.remove("hidden"); // Tampilkan menu
     }
 }
