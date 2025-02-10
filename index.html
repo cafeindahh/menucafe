@@ -5,38 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Café Indah</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+       /* Animasi background gradient */
+       @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    body {
+        background: linear-gradient(-45deg, #f5f7fa, #c3cfe2);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease-in-out infinite;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    /* Animasi fade-in lebih halus */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(-5px);
+        animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Efek teks judul tanpa scale */
+    .title-effect {
+        animation: none; /* Menghapus efek scaling */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Meningkatkan keterbacaan pada mobile */
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem; /* Lebih kecil agar tidak blur */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+</style>
 </head>
-<body class="bg-gray-50 p-5 font-sans">
+<body class="p-5 font-sans">
 
     <!-- Header -->
-    <header class="text-center py-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white shadow-lg">
-        <h1 class="text-4xl font-bold">Selamat Datang di Café Indah</h1>
+    <header class="text-center py-8 bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 text-white rounded-lg shadow-lg fade-in">
+        <h1 class="text-5xl font-bold welcome-text">Selamat Datang di Cafe Indah</h1>
         <p class="mt-2 text-lg italic">Nikmati pilihan menu lezat yang siap memanjakan lidah Anda!</p>
     </header>
 
     <!-- Filter Kategori -->
-    <div class="flex justify-center flex-wrap gap-4 mt-6 mb-8">
-        <button class="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300" onclick="filterMenu('all')">Semua</button>
-        <button class="bg-orange-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-500 transition duration-300" onclick="filterMenu('makanan')">Makanan</button>
-        <button class="bg-green-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition duration-300" onclick="filterMenu('minuman')">Minuman</button>
+    <div class="flex justify-center gap-4 mt-6 mb-8 fade-in">
+        <button class="bg-teal-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-600 category-button" onclick="filterMenu('all')">Semua</button>
+        <button class="bg-blue-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-500 category-button" onclick="filterMenu('makanan')">Makanan</button>
+        <button class="bg-indigo-400 text-white px-6 py-3 rounded-lg shadow-md hover:bg-indigo-500 category-button" onclick="filterMenu('minuman')">Minuman</button>
     </div>
 
     <!-- Daftar Menu -->
-    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
-        <!-- Menu akan di-generate oleh JavaScript -->
+    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10 fade-in">
+        <!-- Menu dan varian akan di-generate oleh JavaScript -->
     </div>
 
-    <!-- Modal untuk Pilih Varian -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-4/5 sm:w-3/5 md:w-1/3 text-center">
-            <h2 id="modal-title" class="text-xl font-bold mb-4">Pilih Varian</h2>
-            <div id="modal-content" class="space-y-2"></div>
-            <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onclick="closeModal()">
-                Tutup
-            </button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script src="scriptt.js"></script>
 </body>
 </html>
