@@ -11,7 +11,7 @@ const menuData = [
             { name: "Nasi Goreng Kecap Spesial", price: 23000 },
             { name: "Nasi Goreng Putih Spesial", price: 23000 },
             { name: "Nasi Goreng Ikan Asin", price: 20000 },
-            { name: "Nasi Goreng Terasi dan Ikan Asing", price: 22000 },
+            { name: "Nasi Goreng Terasi dan Ikan Asin", price: 22000 },
             { name: "Nasi Goreng Komplit", price: 25000 }
         ]
     },
@@ -19,8 +19,8 @@ const menuData = [
         category: "Nasi Ayam",
         type: "makanan",
         items: [
-            { name: "Nasi Ayam Lalapan", price: 20000 },
-            { name: "Nasi Ayam Geprek", price: 20000 },
+            { name: "Nasi Ayam Lalapan", price: 30000 },
+            { name: "Nasi Ayam Geprek", price: 30000 },
             { name: "Nasi Putih", price: 5000 }
         ]
     },
