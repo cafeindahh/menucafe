@@ -178,11 +178,11 @@ function filterMenu(filterType) {
     menuData.forEach(menuCategory => {
         if (filterType === "all" || menuCategory.type === filterType) {
             const menuCard = document.createElement("div");
-            menuCard.className = "bg-white p-5 rounded-lg shadow-md text-center";
+            menuCard.className = "bg-white p-5 rounded-lg shadow-md text-center opacity-0 translate-y-5 transition-all duration-500";
 
-            // Tombol Pilih Varian dengan warna baru
+            // Tombol Pilih Varian dengan warna baru + animasi hover
             let variantsHTML = `
-                <button class="bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-2 rounded-lg hover:from-teal-600 hover:to-blue-600 transition duration-300 ease-in-out mb-3"
+                <button class="bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 hover:from-teal-600 hover:to-blue-600 transition-transform duration-300 ease-in-out mb-3"
                     onclick="toggleVariants('${menuCategory.category}')">
                     Pilih Varian
                 </button>
@@ -197,7 +197,7 @@ function filterMenu(filterType) {
                 }).format(item.price);
 
                 variantsHTML += `
-                    <div class="flex justify-between items-center p-3 bg-gray-100 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center p-3 bg-gray-100 rounded-lg shadow-md opacity-0 translate-y-3 transition-all duration-500">
                         <span class="text-lg font-medium">${item.name}</span>
                         <span class="text-gray-700 font-semibold">${formattedPrice}</span>
                     </div>
@@ -212,12 +212,27 @@ function filterMenu(filterType) {
             `;
 
             container.appendChild(menuCard);
+            
+            // Memicu animasi fade-in
+            setTimeout(() => {
+                menuCard.classList.remove("opacity-0", "translate-y-5");
+            }, 100);
         }
     });
 }
 
-// Fungsi untuk menampilkan atau menyembunyikan varian menu
+// Fungsi untuk menampilkan atau menyembunyikan varian menu dengan animasi
 function toggleVariants(category) {
     const variantDiv = document.getElementById(`variants-${category}`);
     variantDiv.classList.toggle("hidden");
+    
+    if (!variantDiv.classList.contains("hidden")) {
+        const items = variantDiv.querySelectorAll("div");
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.remove("opacity-0", "translate-y-3");
+            }, index * 100);
+        });
+    }
 }
+
